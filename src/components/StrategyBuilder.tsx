@@ -152,7 +152,7 @@ export default function StrategyBuilder() {
                       {[1,2,3,4,5,10].map(q => <option key={q} value={q}>{q}</option>)}
                     </select>
                     <select 
-                      className="bg-[#111A22] border border-[#283647] rounded px-2 py-1 text-slate-200 focus:outline-none focus:border-[#00C29A]"
+                      className="bg-white border border-slate-300 rounded px-2 py-1 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#00C29A]/50 focus:border-[#00C29A]"
                       value={pos.type}
                       onChange={e => updatePosition(pos.id, 'type', e.target.value)}
                     >
