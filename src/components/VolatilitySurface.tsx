@@ -9,10 +9,13 @@ const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 export default function VolatilitySurface() {
   const [data, setData] = useState<any>(null);
+  const [baseIv, setBaseIv] = useState(0.20);
+  const [smileSteepness, setSmileSteepness] = useState(2.5);
+  const [termSlope, setTermSlope] = useState(0.1);
 
   useEffect(() => {
     // We import data only on client
-    const { strikes, maturities, ivMatrix } = generateVolatilitySurface();
+    const { strikes, maturities, ivMatrix } = generateVolatilitySurface(baseIv, smileSteepness, termSlope);
     
     setData([
       {
@@ -35,7 +38,7 @@ export default function VolatilitySurface() {
         }
       }
     ]);
-  }, []);
+  }, [baseIv, smileSteepness, termSlope]);
 
   if (!data) {
     return <div className="h-[400px] flex items-center justify-center text-slate-400">Loading Volatility Surface...</div>;
@@ -43,7 +46,25 @@ export default function VolatilitySurface() {
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-      <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700 mb-6">Implied Volatility Surface</h2>
+      <div className="flex flex-col lg:flex-row justify-between lg:items-center mb-6 space-y-4 lg:space-y-0">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">Implied Volatility Surface</h2>
+        
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <div className="flex items-center space-x-2">
+            <span className="text-slate-500 font-medium">Base IV: {(baseIv * 100).toFixed(0)}%</span>
+            <input type="range" min="0.05" max="0.5" step="0.01" value={baseIv} onChange={(e) => setBaseIv(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-slate-500 font-medium">Smile Steepness: {smileSteepness.toFixed(1)}</span>
+            <input type="range" min="0.1" max="5.0" step="0.1" value={smileSteepness} onChange={(e) => setSmileSteepness(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-slate-500 font-medium">Term Slope: {termSlope.toFixed(2)}</span>
+            <input type="range" min="0.0" max="0.5" step="0.01" value={termSlope} onChange={(e) => setTermSlope(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+          </div>
+        </div>
+      </div>
+
       <div className="h-[500px] w-full relative">
         <Plot
           data={data}

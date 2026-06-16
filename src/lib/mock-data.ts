@@ -1,4 +1,4 @@
-export function generateVolatilitySurface() {
+export function generateVolatilitySurface(baseIv: number = 0.20, smileSteepness: number = 2.5, termSlope: number = 0.1) {
   const strikes = [];
   const maturities = []; // in days
   const ivMatrix = [];
@@ -21,16 +21,16 @@ export function generateVolatilitySurface() {
       const k = strikes[j];
       
       // Base IV
-      let iv = 0.20; 
+      let iv = baseIv; 
       
       // Volatility Smile (higher IV for OTM/ITM)
       const moneyness = k / 100.0;
-      const smile = Math.pow(moneyness - 1.0, 2) * 2.5;
+      const smile = Math.pow(moneyness - 1.0, 2) * smileSteepness;
       
       // Term structure (IV decreases slightly with longer maturity)
       const term = 1.0 / Math.sqrt(t);
       
-      iv = iv + smile + term * 0.1;
+      iv = iv + smile + term * termSlope;
       
       rowIVs.push(iv);
     }
