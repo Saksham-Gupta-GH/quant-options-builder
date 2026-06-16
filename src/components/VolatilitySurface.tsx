@@ -21,9 +21,9 @@ export default function VolatilitySurface() {
         y: maturities,
         type: 'surface',
         colorscale: [
-          [0, '#0B1319'],
-          [0.5, '#0f383e'],
-          [1, '#00C29A']
+          [0, '#e0f2f1'],
+          [0.5, '#4db6ac'],
+          [1, '#00796b']
         ],
         contours: {
           z: {
@@ -42,8 +42,8 @@ export default function VolatilitySurface() {
   }
 
   return (
-    <div className="bg-[#111A22] rounded-xl border border-[#283647] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-      <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-6">Implied Volatility Surface</h2>
+    <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+      <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700 mb-6">Implied Volatility Surface</h2>
       <div className="h-[500px] w-full relative">
         <Plot
           data={data}
@@ -53,9 +53,9 @@ export default function VolatilitySurface() {
             paper_bgcolor: 'transparent',
             plot_bgcolor: 'transparent',
             scene: {
-              xaxis: { title: { text: 'Strike Price', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
-              yaxis: { title: { text: 'Days to Expiration', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
-              zaxis: { title: { text: 'Implied Volatility', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
+              xaxis: { title: { text: 'Strike Price', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
+              yaxis: { title: { text: 'Days to Expiration', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
+              zaxis: { title: { text: 'Implied Volatility', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
               camera: {
                 eye: { x: 1.5, y: 1.5, z: 1.2 }
               }
