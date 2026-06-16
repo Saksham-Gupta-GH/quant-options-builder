@@ -24,8 +24,8 @@ export default function RootLayout({
                 <div className="w-8 h-8 rounded-full bg-[#1A73E8] flex items-center justify-center">
                   <span className="text-white font-medium text-lg leading-none">Q</span>
                 </div>
-                <span className="font-normal text-xl tracking-tight text-[#202124] flex items-center">
-                  <span className="font-semibold mr-1">Google</span> Quant
+                <span className="font-semibold text-xl tracking-tight text-[#202124] flex items-center">
+                  Quant Analytics
                 </span>
               </div>
               <div className="flex space-x-6">
