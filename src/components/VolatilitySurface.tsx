@@ -24,9 +24,9 @@ export default function VolatilitySurface() {
         y: maturities,
         type: 'surface',
         colorscale: [
-          [0, '#e0f2f1'],
-          [0.5, '#4db6ac'],
-          [1, '#00796b']
+          [0, '#E8F0FE'],
+          [0.5, '#8AB4F8'],
+          [1, '#1A73E8']
         ],
         contours: {
           z: {
@@ -45,22 +45,22 @@ export default function VolatilitySurface() {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+    <div className="bg-white rounded-[24px] border border-[#DADCE0] p-6 shadow-sm">
       <div className="flex flex-col lg:flex-row justify-between lg:items-center mb-6 space-y-4 lg:space-y-0">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">Implied Volatility Surface</h2>
+        <h2 className="text-sm font-medium text-[#5F6368]">Implied Volatility Surface</h2>
         
         <div className="flex flex-wrap items-center gap-4 text-sm">
           <div className="flex items-center space-x-2">
-            <span className="text-slate-500 font-medium">Base IV: {(baseIv * 100).toFixed(0)}%</span>
-            <input type="range" min="0.05" max="0.5" step="0.01" value={baseIv} onChange={(e) => setBaseIv(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+            <span className="text-[#5F6368] font-medium">Base IV: {(baseIv * 100).toFixed(0)}%</span>
+            <input type="range" min="0.05" max="0.5" step="0.01" value={baseIv} onChange={(e) => setBaseIv(parseFloat(e.target.value))} className="accent-[#1A73E8] w-24" />
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-slate-500 font-medium">Smile Steepness: {smileSteepness.toFixed(1)}</span>
-            <input type="range" min="0.1" max="5.0" step="0.1" value={smileSteepness} onChange={(e) => setSmileSteepness(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+            <span className="text-[#5F6368] font-medium">Smile Steepness: {smileSteepness.toFixed(1)}</span>
+            <input type="range" min="0.1" max="5.0" step="0.1" value={smileSteepness} onChange={(e) => setSmileSteepness(parseFloat(e.target.value))} className="accent-[#1A73E8] w-24" />
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-slate-500 font-medium">Term Slope: {termSlope.toFixed(2)}</span>
-            <input type="range" min="0.0" max="0.5" step="0.01" value={termSlope} onChange={(e) => setTermSlope(parseFloat(e.target.value))} className="accent-[#00C29A] w-24" />
+            <span className="text-[#5F6368] font-medium">Term Slope: {termSlope.toFixed(2)}</span>
+            <input type="range" min="0.0" max="0.5" step="0.01" value={termSlope} onChange={(e) => setTermSlope(parseFloat(e.target.value))} className="accent-[#1A73E8] w-24" />
           </div>
         </div>
       </div>
@@ -74,9 +74,9 @@ export default function VolatilitySurface() {
             paper_bgcolor: 'transparent',
             plot_bgcolor: 'transparent',
             scene: {
-              xaxis: { title: { text: 'Strike Price', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
-              yaxis: { title: { text: 'Days to Expiration', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
-              zaxis: { title: { text: 'Implied Volatility', font: { color: '#475569' } }, color: '#475569', gridcolor: '#e2e8f0' },
+              xaxis: { title: { text: 'Strike Price', font: { color: '#5F6368' } }, color: '#5F6368', gridcolor: '#F1F3F4' },
+              yaxis: { title: { text: 'Days to Expiration', font: { color: '#5F6368' } }, color: '#5F6368', gridcolor: '#F1F3F4' },
+              zaxis: { title: { text: 'Implied Volatility', font: { color: '#5F6368' } }, color: '#5F6368', gridcolor: '#F1F3F4' },
               camera: {
                 eye: { x: 1.5, y: 1.5, z: 1.2 }
               }

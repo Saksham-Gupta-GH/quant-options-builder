@@ -16,21 +16,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gradient-to-br from-[#F0FAFA] via-white to-[#E6F7F5] text-slate-900 min-h-screen antialiased`}>
-        <nav className="border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm">
+      <body className={`${inter.className} bg-[#F8F9FA] text-[#202124] min-h-screen antialiased`}>
+        <nav className="border-b border-[#DADCE0] bg-white sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-[#00C29A] flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-lg leading-none">R</span>
+                <div className="w-8 h-8 rounded-full bg-[#1A73E8] flex items-center justify-center">
+                  <span className="text-white font-medium text-lg leading-none">Q</span>
                 </div>
-                <span className="font-bold text-xl tracking-tight text-slate-800">Quant Analytics</span>
+                <span className="font-normal text-xl tracking-tight text-[#202124] flex items-center">
+                  <span className="font-semibold mr-1">Google</span> Quant
+                </span>
               </div>
               <div className="flex space-x-6">
-                <a href="https://quant-options-builder.vercel.app/" target="_blank" rel="noreferrer" className="text-sm font-medium text-slate-600 hover:text-[#00C29A] transition-colors">
+                <a href="https://quant-options-builder.vercel.app/" target="_blank" rel="noreferrer" className="text-sm font-medium text-[#5F6368] hover:text-[#1A73E8] transition-colors">
                   Live Demo
                 </a>
-                <a href="https://github.com/Saksham-Gupta-GH" target="_blank" rel="noreferrer" className="text-sm font-medium text-slate-600 hover:text-[#00C29A] transition-colors">
+                <a href="https://github.com/Saksham-Gupta-GH" target="_blank" rel="noreferrer" className="text-sm font-medium text-[#5F6368] hover:text-[#1A73E8] transition-colors">
                   GitHub
                 </a>
               </div>

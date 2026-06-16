@@ -95,10 +95,10 @@ export default function StrategyBuilder() {
   }, [positions]);
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+    <div className="bg-white rounded-[24px] border border-[#DADCE0] p-6 shadow-sm">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-slate-800">Strategy Builder</h2>
-        <div className="text-sm font-medium text-slate-500">Underlying: $100.00 | DTE: 30 | IV: 25.0%</div>
+        <h2 className="text-xl font-normal text-[#202124]">Strategy Builder</h2>
+        <div className="text-sm font-medium text-[#5F6368]">Underlying: $100.00 | DTE: 30 | IV: 25.0%</div>
       </div>
       
       {/* Portfolio Greeks */}
@@ -109,9 +109,9 @@ export default function StrategyBuilder() {
           { label: 'Theta', value: portfolioGreeks.theta },
           { label: 'Vega', value: portfolioGreeks.vega },
         ].map(g => (
-          <div key={g.label} className="bg-slate-50 rounded-lg p-4 border border-slate-200 shadow-sm">
-            <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">{g.label}</div>
-            <div className={`text-xl font-bold ${g.value > 0 ? 'text-[#00C29A]' : g.value < 0 ? 'text-rose-500' : 'text-slate-700'}`}>
+          <div key={g.label} className="bg-white rounded-xl p-4 border border-[#DADCE0]">
+            <div className="text-[#5F6368] text-xs font-medium tracking-wide mb-1">{g.label}</div>
+            <div className={`text-xl font-medium ${g.value > 0 ? 'text-[#1E8E3E]' : g.value < 0 ? 'text-[#D93025]' : 'text-[#202124]'}`}>
               {g.value > 0 ? '+' : ''}{g.value.toFixed(2)}
             </div>
           </div>
@@ -122,10 +122,10 @@ export default function StrategyBuilder() {
         {/* Positions Panel */}
         <div className="lg:col-span-1 space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-700">Legs</h3>
+            <h3 className="text-sm font-medium text-[#5F6368]">Legs</h3>
             <button 
               onClick={addPosition}
-              className="flex items-center text-sm font-bold text-[#00C29A] hover:text-[#009e7d] transition-colors"
+              className="flex items-center text-sm font-medium text-[#1A73E8] hover:text-[#174EA6] transition-colors"
             >
               <PlusCircle className="w-4 h-4 mr-1" /> Add Leg
             </button>
@@ -133,11 +133,11 @@ export default function StrategyBuilder() {
           
           <div className="space-y-3">
             {positions.map(pos => (
-              <div key={pos.id} className="bg-slate-50 rounded-lg p-3 border border-slate-200 text-sm shadow-sm">
+              <div key={pos.id} className="bg-white rounded-xl p-3 border border-[#DADCE0] text-sm">
                 <div className="flex justify-between items-center mb-2">
                   <div className="flex space-x-2">
                     <select 
-                      className="bg-white border border-slate-300 rounded px-2 py-1 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#00C29A]/50 focus:border-[#00C29A]"
+                      className="bg-white border border-[#DADCE0] rounded-md px-2 py-1 text-[#202124] focus:outline-none focus:ring-2 focus:ring-[#1A73E8]/20 focus:border-[#1A73E8]"
                       value={pos.action}
                       onChange={e => updatePosition(pos.id, 'action', e.target.value)}
                     >
@@ -145,7 +145,7 @@ export default function StrategyBuilder() {
                       <option value="sell">Sell</option>
                     </select>
                     <select 
-                      className="bg-white border border-slate-300 rounded px-2 py-1 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#00C29A]/50 focus:border-[#00C29A]"
+                      className="bg-white border border-[#DADCE0] rounded-md px-2 py-1 text-[#202124] focus:outline-none focus:ring-2 focus:ring-[#1A73E8]/20 focus:border-[#1A73E8]"
                       value={pos.quantity}
                       onChange={e => updatePosition(pos.id, 'quantity', parseInt(e.target.value))}
                     >
@@ -160,25 +160,25 @@ export default function StrategyBuilder() {
                       <option value="put">Put</option>
                     </select>
                   </div>
-                  <button onClick={() => removePosition(pos.id)} className="text-slate-400 hover:text-rose-500 transition-colors">
+                  <button onClick={() => removePosition(pos.id)} className="text-[#5F6368] hover:text-[#D93025] transition-colors">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
                 <div className="flex space-x-2 items-center">
                   <div className="flex-1 flex items-center space-x-2">
-                    <span className="text-slate-500 font-medium">Strike</span>
+                    <span className="text-[#5F6368] font-medium">Strike</span>
                     <input 
                       type="number" 
-                      className="bg-white border border-slate-300 rounded px-2 py-1 w-20 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#00C29A]/50 focus:border-[#00C29A]"
+                      className="bg-white border border-[#DADCE0] rounded-md px-2 py-1 w-20 text-[#202124] focus:outline-none focus:ring-2 focus:ring-[#1A73E8]/20 focus:border-[#1A73E8]"
                       value={pos.strike}
                       onChange={e => updatePosition(pos.id, 'strike', parseFloat(e.target.value))}
                     />
                   </div>
                   <div className="flex-1 flex items-center space-x-2">
-                    <span className="text-slate-500 font-medium">Prem.</span>
+                    <span className="text-[#5F6368] font-medium">Prem.</span>
                     <input 
                       type="number" step="0.01"
-                      className="bg-white border border-slate-300 rounded px-2 py-1 w-20 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#00C29A]/50 focus:border-[#00C29A]"
+                      className="bg-white border border-[#DADCE0] rounded-md px-2 py-1 w-20 text-[#202124] focus:outline-none focus:ring-2 focus:ring-[#1A73E8]/20 focus:border-[#1A73E8]"
                       value={pos.premium}
                       onChange={e => updatePosition(pos.id, 'premium', parseFloat(e.target.value))}
                     />
@@ -191,38 +191,38 @@ export default function StrategyBuilder() {
 
         {/* PnL Chart */}
         <div className="lg:col-span-2 h-[400px]">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-slate-700 mb-4">Payoff at Expiration</h3>
+          <h3 className="text-sm font-medium text-[#5F6368] mb-4">Payoff at Expiration</h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#F1F3F4" vertical={false} />
               <XAxis 
                 dataKey="price" 
-                stroke="#64748b" 
-                tick={{fill: '#64748b', fontSize: 12, fontWeight: 500}}
+                stroke="#BDC1C6" 
+                tick={{fill: '#5F6368', fontSize: 12, fontWeight: 500}}
                 domain={['dataMin', 'dataMax']}
                 type="number"
                 tickCount={10}
               />
               <YAxis 
-                stroke="#64748b" 
-                tick={{fill: '#64748b', fontSize: 12, fontWeight: 500}}
+                stroke="#BDC1C6" 
+                tick={{fill: '#5F6368', fontSize: 12, fontWeight: 500}}
                 tickFormatter={(val) => `$${val}`}
               />
               <Tooltip 
-                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', color: '#0f172a', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                itemStyle={{ color: '#00C29A', fontWeight: 700 }}
+                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#DADCE0', color: '#202124', borderRadius: '8px', boxShadow: '0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15)' }}
+                itemStyle={{ color: '#1A73E8', fontWeight: 500 }}
                 labelFormatter={(val) => `Underlying Price: $${val}`}
                 formatter={(val: any) => typeof val === 'number' ? [`$${val.toFixed(2)}`, 'Profit/Loss'] : ['', 'Profit/Loss']}
               />
-              <ReferenceLine y={0} stroke="#94a3b8" />
-              <ReferenceLine x={CURRENT_PRICE} stroke="#94a3b8" strokeDasharray="3 3" />
+              <ReferenceLine y={0} stroke="#BDC1C6" />
+              <ReferenceLine x={CURRENT_PRICE} stroke="#BDC1C6" strokeDasharray="3 3" />
               <Line 
                 type="monotone" 
                 dataKey="pnl" 
-                stroke="#00C29A" 
+                stroke="#1A73E8" 
                 strokeWidth={3} 
                 dot={false}
-                activeDot={{ r: 6, fill: '#00C29A', stroke: '#ffffff', strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: '#1A73E8', stroke: '#ffffff', strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
