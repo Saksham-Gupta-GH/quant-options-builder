@@ -20,12 +20,16 @@ export default function VolatilitySurface() {
         x: strikes,
         y: maturities,
         type: 'surface',
-        colorscale: 'Viridis',
+        colorscale: [
+          [0, '#0B1319'],
+          [0.5, '#0f383e'],
+          [1, '#00C29A']
+        ],
         contours: {
           z: {
             show: true,
             usecolormap: true,
-            highlightcolor: '#42f462',
+            highlightcolor: '#00e3b4',
             project: { z: true }
           }
         }
@@ -38,8 +42,8 @@ export default function VolatilitySurface() {
   }
 
   return (
-    <div className="bg-slate-900 rounded-xl border border-slate-800 p-6 shadow-2xl">
-      <h2 className="text-2xl font-semibold text-slate-100 mb-6">Implied Volatility Surface</h2>
+    <div className="bg-[#111A22] rounded-xl border border-[#283647] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+      <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-6">Implied Volatility Surface</h2>
       <div className="h-[500px] w-full relative">
         <Plot
           data={data}
@@ -49,9 +53,9 @@ export default function VolatilitySurface() {
             paper_bgcolor: 'transparent',
             plot_bgcolor: 'transparent',
             scene: {
-              xaxis: { title: { text: 'Strike Price' }, color: '#94a3b8', gridcolor: '#334155' },
-              yaxis: { title: { text: 'Days to Expiration' }, color: '#94a3b8', gridcolor: '#334155' },
-              zaxis: { title: { text: 'Implied Volatility' }, color: '#94a3b8', gridcolor: '#334155' },
+              xaxis: { title: { text: 'Strike Price', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
+              yaxis: { title: { text: 'Days to Expiration', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
+              zaxis: { title: { text: 'Implied Volatility', font: { color: '#64748b' } }, color: '#64748b', gridcolor: '#283647' },
               camera: {
                 eye: { x: 1.5, y: 1.5, z: 1.2 }
               }

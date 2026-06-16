@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quant Options Builder
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC)
+![Status](https://img.shields.io/badge/Status-Live-success)
+
+A professional-grade, interactive web application for quantitative options analysis. 
+
+**Live Demo:** [https://quant-options-builder.vercel.app/](https://quant-options-builder.vercel.app/)
+
+## Overview
+
+Quant Options Builder is designed to help traders, quants, and financial engineers visualize and analyze complex options strategies. It bridges the gap between sophisticated quantitative finance models and modern, high-performance web interfaces.
+
+### Key Features
+- **Strategy Builder (2D PnL):** Construct multi-leg options strategies (e.g., Iron Condors, Straddles, Spreads) and visualize their Profit/Loss payoff curves at expiration.
+- **Black-Scholes Pricing Engine:** Real-time calculation of portfolio "Greeks" (Delta, Gamma, Theta, Vega, Rho) using standard options pricing models.
+- **Implied Volatility Surface (3D):** An interactive 3D visualization demonstrating the volatility smile across strike prices and the term structure across times-to-expiration.
+
+## Tech Stack
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (Enterprise/Rubrik Theme)
+- **Data Visualization:** 
+  - `recharts` for 2D PnL payoff charts.
+  - `react-plotly.js` for 3D WebGL Volatility Surface rendering.
 
 ## Getting Started
 
-First, run the development server:
+To run the application locally:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Saksham-Gupta-GH/quant-options-builder.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd quant-options-builder
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture & Quantitative Models
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application performs options math entirely on the client side for maximum responsiveness.
+- **`src/lib/black-scholes.ts`**: Contains the core math utilities, including the Cumulative Normal Distribution (CND) approximations required for the Black-Scholes-Merton model.
+- **Mock Data Generation**: The 3D surface utilizes a mock data generator that algorithmically simulates a realistic volatility surface by applying a quadratic function to moneyness (for the smile) and an inverse square root function to time (for the term structure).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT
